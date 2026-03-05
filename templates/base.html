@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}BMI Calculator{% endblock %}</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 480px; margin: 0 auto; padding: 1.5rem; }
+    h1 { margin-top: 0; }
+    nav { margin-bottom: 1.5rem; }
+    nav a { margin-right: 1rem; color: #0d6efd; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    .flash { padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; }
+    .flash.success { background: #d1e7dd; color: #0a3622; }
+    .flash.error { background: #f8d7da; color: #58151c; }
+    label { display: block; margin-top: 0.5rem; }
+    input { width: 100%; padding: 0.5rem; margin-top: 0.25rem; }
+    .row { display: flex; gap: 1rem; }
+    .row > div { flex: 1; }
+    button { margin-top: 1rem; padding: 0.5rem 1rem; background: #0d6efd; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #0b5ed7; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.5rem; text-align: left; border-bottom: 1px solid #dee2e6; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('main.index') }}">BMI Calculator</a>
+  </nav>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</body>
+</html>

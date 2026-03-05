@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>BMI Calculator</h1>
+  <p>Enter your weight and height.</p>
+  <form method="post" action="{{ url_for('main.calculate') }}">
+    <label for="weight">Weight (lbs)</label>
+    <input type="number" id="weight" name="weight" step="0.1" min="0.1" required placeholder="e.g. 150">
+
+    <label>Height</label>
+    <div class="row">
+      <div>
+        <label for="feet">Feet</label>
+        <input type="number" id="feet" name="feet" min="0" max="8" value="5" required>
+      </div>
+      <div>
+        <label for="inches">Inches</label>
+        <input type="number" id="inches" name="inches" min="0" max="11" value="9" required>
+      </div>
+    </div>
+
+    <button type="submit">Calculate BMI</button>
+  </form>
+{% endblock %}
